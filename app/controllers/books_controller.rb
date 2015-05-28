@@ -38,7 +38,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_with(@book)
-    
+
     authorize! :manage, @book
   end
 
@@ -48,6 +48,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:name, :author, :description, :price, :availability)
+      params.require(:book).permit(:name, :author, :description, :price, :availability, :image, :resource)
     end
 end
