@@ -19,6 +19,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    authorize! :manage, @book
   end
 
   def create
@@ -30,11 +31,15 @@ class BooksController < ApplicationController
   def update
     @book.update(book_params)
     respond_with(@book)
+
+    authorize! :manage, @book
   end
 
   def destroy
     @book.destroy
     respond_with(@book)
+    
+    authorize! :manage, @book
   end
 
   private
